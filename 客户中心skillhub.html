@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillHub - 客户中心 AI Skills</title>
+<style>
+:root {
+  --header-bg: #161b22;
+  --header-text: #f0f6fc;
+  --header-secondary: #8b949e;
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-page: #f6f8fa;
+  --card-bg: #ffffff;
+  --border: #d0d7de;
+  --border-muted: #d8dee4;
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --text-muted: #8b949e;
+  --link: #0969da;
+  --btn-primary-bg: #1f883d;
+  --btn-primary-hover: #1a7f37;
+  --btn-primary-text: #ffffff;
+  --btn-outline-bg: #f6f8fa;
+  --btn-outline-border: #d0d7de;
+  --star: #e3b341;
+  --vote: #bf3989;
+  --download: #0969da;
+  --tag-bg: #ddf4ff;
+  --tag-text: #0969da;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; background: var(--bg-page); color: var(--text-primary); font-size: 14px; line-height: 1.5; min-height: 100vh; }
+
+.header { background: var(--header-bg); border-bottom: 1px solid #30363d; position: sticky; top: 0; z-index: 100; }
+.header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; gap: 16px; }
+.header-logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; color: var(--header-text); white-space: nowrap; }
+.header-logo svg { width: 28px; height: 28px; }
+.header-logo span { color: var(--header-secondary); font-weight: 400; font-size: 13px; }
+
+.header-search { flex: 1; max-width: 380px; position: relative; }
+.header-search input { width: 100%; height: 32px; padding: 0 12px 0 34px; background: var(--bg-tertiary); border: 1px solid #30363d; border-radius: var(--radius); color: #c9d1d9; font-size: 13px; outline: none; transition: border-color 0.15s, width 0.3s; }
+.header-search input:focus { border-color: #58a6ff; width: 480px; }
+.header-search svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; opacity: 0.5; }
+
+.header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; font-size: 13px; font-weight: 500; border-radius: var(--radius); cursor: pointer; border: 1px solid transparent; transition: all 0.12s; white-space: nowrap; font-family: inherit; }
+.btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: rgba(27,31,36,0.15); }
+.btn-primary:hover { background: var(--btn-primary-hover); }
+.btn-outline { background: var(--btn-outline-bg); color: var(--text-primary); border-color: var(--btn-outline-border); }
+.btn-outline:hover { background: #eaeef2; }
+.btn-dark { background: transparent; color: #c9d1d9; border-color: #30363d; }
+.btn-dark:hover { background: #30363d; }
+.btn-sm { padding: 3px 10px; font-size: 12px; }
+.btn-icon { padding: 4px 8px; }
+.btn svg { width: 15px; height: 15px; }
+.btn.active { background: #0969da; color: #fff; border-color: #0969da; }
+
+.layout { max-width: 1280px; margin: 0 auto; padding: 24px; display: flex; gap: 24px; }
+.sidebar { width: 256px; flex-shrink: 0; position: sticky; top: 88px; align-self: flex-start; max-height: calc(100vh - 112px); overflow-y: auto; }
+.main { flex: 1; min-width: 0; }
+
+.sidebar-section { margin-bottom: 20px; }
+.sidebar-title { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.5px; padding-left: 2px; }
+.sidebar-item { display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; border-radius: var(--radius); cursor: pointer; font-size: 13px; color: var(--text-primary); transition: background 0.1s; }
+.sidebar-item:hover { background: #eaeef2; }
+.sidebar-item.active { background: #ddf4ff; color: var(--link); font-weight: 500; }
+.sidebar-count { font-size: 11px; color: var(--text-secondary); background: #eaeef2; padding: 1px 7px; border-radius: 10px; }
+.sidebar-item.active .sidebar-count { background: #b6e3ff; color: var(--link); }
+
+.sidebar-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+
+.toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-muted); }
+.toolbar-left { display: flex; align-items: center; gap: 16px; }
+.toolbar-count { font-weight: 500; font-size: 15px; }
+.toolbar-right { display: flex; align-items: center; gap: 8px; }
+.view-toggle { display: flex; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.view-toggle button { padding: 6px 10px; border: none; background: transparent; cursor: pointer; color: var(--text-secondary); }
+.view-toggle button.active { background: #0969da; color: #fff; }
+.view-toggle button:not(.active):hover { background: #f3f4f6; }
+
+.skill-list { display: flex; flex-direction: column; gap: 0; }
+.skill-list.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+.skill-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px 24px; transition: all 0.15s; position: relative; }
+.skill-list:not(.grid) .skill-card { border-bottom: 0; }
+.skill-list:not(.grid) .skill-card:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.skill-list:not(.grid) .skill-card:last-child { border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-bottom: 1px solid var(--border); }
+.skill-list.grid .skill-card { border-radius: var(--radius-lg); }
+.skill-card:hover { background: #f6f8fa; border-color: #afb8c1; }
+.skill-card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+.skill-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; color: #fff; }
+.skill-name { font-weight: 600; font-size: 16px; color: var(--link); cursor: pointer; }
+.skill-name:hover { text-decoration: underline; }
+.skill-visibility { font-size: 11px; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 0 7px; margin-left: 8px; font-weight: 400; }
+.skill-desc { color: var(--text-secondary); font-size: 13px; margin: 6px 0 12px; line-height: 1.5; }
+.skill-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-secondary); }
+.skill-meta-item { display: inline-flex; align-items: center; gap: 4px; }
+.skill-meta-item svg { width: 14px; height: 14px; opacity: 0.65; }
+.skill-meta-author { display: flex; align-items: center; gap: 6px; }
+.skill-meta-author img { width: 20px; height: 20px; border-radius: 50%; }
+.skill-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.skill-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: var(--tag-bg); color: var(--tag-text); font-weight: 500; }
+.skill-actions { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); display: flex; gap: 6px; opacity: 0; transition: opacity 0.15s; }
+.skill-card:hover .skill-actions { opacity: 1; }
+.skill-actions .btn { font-size: 12px; }
+
+.rating-stars { display: inline-flex; gap: 2px; cursor: pointer; }
+.rating-stars svg { width: 14px; height: 14px; transition: transform 0.1s; }
+.rating-stars svg:hover { transform: scale(1.2); }
+.rating-stars svg.filled { color: var(--star); fill: var(--star); }
+.rating-stars svg.empty { color: #d0d7de; fill: none; }
+
+.vote-btn { cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--card-bg); font-size: 12px; color: var(--text-secondary); transition: all 0.12s; }
+.vote-btn:hover { background: #fcf0f7; border-color: #bf3989; color: var(--vote); }
+.vote-btn.voted { background: #fcf0f7; border-color: #bf3989; color: var(--vote); font-weight: 500; }
+
+.download-btn { cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--card-bg); font-size: 12px; color: var(--text-secondary); transition: all 0.12s; }
+.download-btn:hover { background: #ddf4ff; border-color: #0969da; color: #0969da; }
+
+.empty-state { text-align: center; padding: 80px 20px; color: var(--text-secondary); }
+.empty-state svg { width: 64px; height: 64px; opacity: 0.3; margin-bottom: 16px; }
+.empty-state h3 { font-size: 16px; margin-bottom: 8px; color: var(--text-primary); }
+.empty-state p { font-size: 13px; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; display: flex; align-items: center; justify-content: center; animation: fadeIn 0.15s; }
+.modal { background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); width: 520px; max-height: 90vh; overflow-y: auto; padding: 24px; box-shadow: var(--shadow-md); animation: slideUp 0.2s; }
+.modal h2 { font-size: 18px; font-weight: 600; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.modal .form-group { margin-bottom: 16px; }
+.modal label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--text-primary); }
+.modal input, .modal select, .modal textarea { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.15s; background: var(--card-bg); }
+.modal input:focus, .modal select:focus, .modal textarea:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9,105,218,0.15); }
+.modal textarea { min-height: 100px; resize: vertical; }
+.modal .drop-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 32px; text-align: center; cursor: pointer; transition: all 0.15s; color: var(--text-secondary); }
+.modal .drop-zone:hover { border-color: #0969da; background: #f6f8fa; }
+.modal .drop-zone.dragover { border-color: #0969da; background: #ddf4ff; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+.ranking-banner { background: linear-gradient(135deg, #fcf0f7 0%, #fef3e2 100%); border: 1px solid #f0d0e0; border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 24px; }
+.ranking-banner-inner { display: flex; align-items: center; justify-content: space-between; }
+.ranking-banner-text h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.ranking-banner-text p { font-size: 12px; color: var(--text-secondary); }
+.ranking-medal { display: flex; gap: -6px; }
+.ranking-medal span { width: 24px; height: 30px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.rank-1 { background: #ffd700; color: #8b6914; }
+.rank-2 { background: #c0c0c0; color: #555; }
+.rank-3 { background: #cd7f32; color: #fff; }
+
+.toast { position: fixed; top: 80px; right: 24px; background: var(--header-bg); color: #fff; padding: 12px 20px; border-radius: var(--radius); font-size: 13px; z-index: 1000; animation: slideInRight 0.3s, fadeOut 0.3s 2.5s forwards; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 8px; }
+.toast.success { border-left: 3px solid #3fb950; }
+.toast svg { width: 16px; height: 16px; }
+
+.ranking-page { display: none; }
+.ranking-page.active { display: block; }
+.main-page { display: block; }
+.main-page.hidden { display: none; }
+
+.ranking-list { display: flex; flex-direction: column; gap: 0; }
+.ranking-item { display: flex; align-items: center; gap: 16px; padding: 16px 24px; background: var(--card-bg); border: 1px solid var(--border); transition: background 0.1s; }
+.ranking-item:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.ranking-item:last-child { border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-bottom: 1px solid var(--border); }
+.ranking-item:not(:last-child) { border-bottom: none; }
+.ranking-item:hover { background: #f6f8fa; }
+.ranking-pos { font-size: 20px; font-weight: 700; width: 40px; text-align: center; color: var(--text-secondary); }
+.ranking-item:nth-child(1) .ranking-pos { color: #ffd700; font-size: 24px; }
+.ranking-item:nth-child(2) .ranking-pos { color: #c0c0c0; font-size: 22px; }
+.ranking-item:nth-child(3) .ranking-pos { color: #cd7f32; font-size: 20px; }
+.ranking-info { flex: 1; }
+.ranking-info .skill-name { font-size: 15px; }
+.ranking-stats { display: flex; gap: 24px; font-size: 12px; color: var(--text-secondary); }
+.ranking-stats span { display: flex; align-items: center; gap: 4px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column; padding: 16px; }
+  .sidebar { width: 100%; position: static; max-height: none; }
+  .skill-list.grid { grid-template-columns: 1fr; }
+  .header-search input:focus { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <svg viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="7" fill="#3fb950"/>
+        <path d="M10 22l5-12 3 7 3-5 4 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span>SkillHub <span>/ 客户中心</span></span>
+    </div>
+    <div class="header-search">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M11.5 7a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"/></svg>
+      <input type="text" id="searchInput" placeholder="搜索 skill 或 作者...">
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-dark btn-sm" onclick="showRanking()">月度评选</button>
+      <button class="btn btn-dark btn-sm" onclick="showUploadModal()">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.25 10.25V2.5h1.5v7.75l2.97-2.97 1.06 1.06L8 13.06l-4.78-4.78 1.06-1.06 2.97 2.97zM2.5 13.5h11v1.5h-11z"/></svg>
+        上传 skill
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">分类</div>
+      <div class="sidebar-item active" data-category="all" onclick="filterCategory('all', this)">
+        <span>全部 skill</span>
+        <span class="sidebar-count" id="count-all">24</span>
+      </div>
+      <div class="sidebar-item" data-category="CxSkills" onclick="filterCategory('CxSkills', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#8250df"></span>CxSkills</span>
+        <span class="sidebar-count" id="count-CxSkills">4</span>
+      </div>
+      <div class="sidebar-item" data-category="工具类" onclick="filterCategory('工具类', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#3fb950"></span>工具类 skills</span>
+        <span class="sidebar-count" id="count-工具类">6</span>
+      </div>
+      <div class="sidebar-item" data-category="产业监控类" onclick="filterCategory('产业监控类', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#0969da"></span>产业监控类</span>
+        <span class="sidebar-count" id="count-产业监控类">3</span>
+      </div>
+      <div class="sidebar-item" data-category="产品类" onclick="filterCategory('产品类', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#bf3989"></span>产品类 skills</span>
+        <span class="sidebar-count" id="count-产品类">4</span>
+      </div>
+      <div class="sidebar-item" data-category="客户类" onclick="filterCategory('客户类', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#e3b341"></span>客户类 skills</span>
+        <span class="sidebar-count" id="count-客户类">5</span>
+      </div>
+      <div class="sidebar-item" data-category="市场类" onclick="filterCategory('市场类', this)">
+        <span style="display:flex;align-items:center;gap:6px"><span class="sidebar-dot" style="background:#cf222e"></span>市场类 skills</span>
+        <span class="sidebar-count" id="count-市场类">2</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">排序</div>
+      <div class="sidebar-item" data-sort="updated" onclick="setSort('updated', this)">最近更新</div>
+      <div class="sidebar-item" data-sort="rating" onclick="setSort('rating', this)">评分最高</div>
+      <div class="sidebar-item" data-sort="votes" onclick="setSort('votes', this)">最受欢迎</div>
+      <div class="sidebar-item" data-sort="downloads" onclick="setSort('downloads', this)">下载最多</div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Main Page -->
+    <div class="main-page" id="mainPage">
+      <!-- Ranking Banner -->
+      <div class="ranking-banner" onclick="showRanking()" style="cursor:pointer">
+        <div class="ranking-banner-inner">
+          <div class="ranking-banner-text">
+            <h3>7月优秀 skill 评选进行中</h3>
+            <p>本月已有 18 票 · 3 天后截止 · 点击查看排行榜</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="ranking-medal">
+              <span class="rank-1">1</span>
+              <span class="rank-2" style="margin-left:-4px">2</span>
+              <span class="rank-3" style="margin-left:-4px">3</span>
+            </div>
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="#656d76"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span class="toolbar-count" id="resultCount">24 个 skill</span>
+        </div>
+        <div class="toolbar-right">
+          <div class="view-toggle">
+            <button class="active" onclick="setView('list', this)" title="列表视图">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2 3.75A.75.75 0 012.75 3h10.5a.75.75 0 010 1.5H2.75A.75.75 0 012 3.75zm0 4A.75.75 0 012.75 7h10.5a.75.75 0 010 1.5H2.75A.75.75 0 012 7.75zm0 4a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"/></svg>
+            </button>
+            <button onclick="setView('grid', this)" title="网格视图">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2 3.75A.75.75 0 012.75 3h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-.75.75h-3.5A.75.75 0 012 7.25v-3.5zm0 5a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-.75.75h-3.5a.75.75 0 01-.75-.75v-3.5zM9 3.75A.75.75 0 019.75 3h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-.75.75h-3.5A.75.75 0 019 7.25v-3.5zm0 5a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-.75.75h-3.5a.75.75 0 01-.75-.75v-3.5z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill List -->
+      <div class="skill-list" id="skillList"></div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display:none">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <h3>没有找到匹配的 skill</h3>
+        <p>试试更换筛选条件或搜索关键词</p>
+      </div>
+    </div>
+
+    <!-- Ranking Page -->
+    <div class="ranking-page" id="rankingPage">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <button class="btn btn-outline btn-sm" onclick="hideRanking()">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h8.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/></svg>
+          返回
+        </button>
+        <h2 style="font-size:18px;font-weight:600">7月优秀 skill 月度评选</h2>
+        <span style="font-size:12px;color:var(--text-secondary);background:#f6f8fa;padding:2px 10px;border-radius:10px">3天后截止</span>
+      </div>
+      <div class="ranking-list" id="rankingList"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Upload Modal -->
+<div class="modal-overlay" id="uploadModal" style="display:none" onclick="if(event.target===this)hideUploadModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2>上传新 skill</h2>
+    <div class="form-group">
+      <label>Skill 名称 *</label>
+      <input type="text" id="uploadName" placeholder="例如：竞品监控自动化 skill">
+    </div>
+    <div class="form-group">
+      <label>所属分类 *</label>
+      <select id="uploadCategory">
+        <option value="">请选择</option>
+        <option value="CxSkills">CxSkills</option>
+        <option value="工具类">工具类 skills</option>
+        <option value="产业监控类">产业监控类 skills</option>
+        <option value="产品类">产品类 skills</option>
+        <option value="客户类">客户类 skills</option>
+        <option value="市场类">市场类 skills</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>简要描述 *</label>
+      <textarea id="uploadDesc" placeholder="描述这个 skill 的功能和用途..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>上传 SKILL.md 文件 *</label>
+      <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+        <svg viewBox="0 0 16 16" width="32" height="32" fill="#8b949e" style="margin-bottom:8px"><path d="M7.25 10.25V2.5h1.5v7.75l2.97-2.97 1.06 1.06L8 13.06l-4.78-4.78 1.06-1.06 2.97 2.97zM2.5 13.5h11v1.5h-11z"/></svg>
+        <p style="font-size:13px">拖拽文件到此处，或点击选择文件</p>
+        <p style="font-size:11px;color:#8b949e">支持 .md 文件</p>
+        <input type="file" id="fileInput" accept=".md" style="display:none" onchange="handleFileSelect(event)">
+      </div>
+      <div id="fileInfo" style="display:none;margin-top:8px;padding:8px 12px;background:#f6f8fa;border-radius:6px;font-size:12px"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="hideUploadModal()">取消</button>
+      <button class="btn btn-primary" onclick="submitSkill()">提交审核</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<script>
+// Skill 模拟数据
+const skillsData = [
+  { id: 1, name: '客户画像分析 skill', category: '客户类', desc: '基于对话记录自动提取客户特征，生成结构化画像报告，支持批量导出。', author: '张三', authorAvatar: 'ZS', rating: 4.8, voteCount: 47, downloadCount: 132, updatedAt: '2026-07-28', tags: ['客户分析', 'NLP'], color: '#e3b341', version: 'v2.3.1' },
+  { id: 2, name: '周报自动生成 skill', category: '工具类', desc: '汇总公众号资讯、会议纪要和项目进度，一键生成标准化周报。', author: '李四', authorAvatar: 'LS', rating: 4.5, voteCount: 38, downloadCount: 98, updatedAt: '2026-07-27', tags: ['文档', '自动化'], color: '#3fb950', version: 'v1.8.0' },
+  { id: 3, name: '竞品价格监控 skill', category: '市场类', desc: '定时抓取竞品公开价格变动，生成价格趋势报告和预警通知。', author: '王五', authorAvatar: 'WW', rating: 4.9, voteCount: 56, downloadCount: 89, updatedAt: '2026-07-26', tags: ['监控', '数据采集'], color: '#cf222e', version: 'v3.0.1' },
+  { id: 4, name: '商业地产资讯采集 skill', category: '产业监控类', desc: '自动化采集商业地产行业资讯，按分类框架整理输出结构化报告。', author: '赵六', authorAvatar: 'ZL', rating: 4.7, voteCount: 41, downloadCount: 156, updatedAt: '2026-07-25', tags: ['地产', '资讯'], color: '#0969da', version: 'v2.5.0' },
+  { id: 5, name: '产品需求分析 skill', category: '产品类', desc: '基于用户反馈和市场数据，辅助产品经理完成需求优先级排序。', author: '钱七', authorAvatar: 'QQ', rating: 4.3, voteCount: 29, downloadCount: 67, updatedAt: '2026-07-24', tags: ['产品', '分析'], color: '#bf3989', version: 'v1.4.2' },
+  { id: 6, name: 'Cx 对话质检 skill', category: 'CxSkills', desc: '自动检测客户对话质量，识别风险话术和服务漏洞，支持自定义规则。', author: '孙八', authorAvatar: 'SB', rating: 4.9, voteCount: 62, downloadCount: 203, updatedAt: '2026-07-23', tags: ['质检', '风控'], color: '#8250df', version: 'v4.1.0' },
+  { id: 7, name: '客户流失预警 skill', category: '客户类', desc: '基于行为数据分析客户流失概率，提前预警并提供挽留策略建议。', author: '周九', authorAvatar: 'ZJ', rating: 4.6, voteCount: 35, downloadCount: 112, updatedAt: '2026-07-22', tags: ['预警', '数据分析'], color: '#e3b341', version: 'v2.0.0' },
+  { id: 8, name: '数据清洗工具 skill', category: '工具类', desc: '批量处理 Excel/CSV 数据，自动去重、格式化、校验和异常检测。', author: '吴十', authorAvatar: 'WS', rating: 4.4, voteCount: 27, downloadCount: 184, updatedAt: '2026-07-21', tags: ['数据处��', 'Excel'], color: '#3fb950', version: 'v1.9.3' },
+  { id: 9, name: 'Cx 知识库检索 skill', category: 'CxSkills', desc: '语义检索客户中心知识库，支持自然语言提问，快速定位相关文档。', author: '郑一', authorAvatar: 'ZY', rating: 4.7, voteCount: 44, downloadCount: 178, updatedAt: '2026-07-20', tags: ['检索', '知识库'], color: '#8250df', version: 'v3.2.0' },
+  { id: 10, name: '竞品产品分析 skill', category: '产品类', desc: '对比分析竞品功能特性，生成差异分析报告和改进建议。', author: '冯二', authorAvatar: 'FE', rating: 4.2, voteCount: 21, downloadCount: 54, updatedAt: '2026-07-19', tags: ['竞品', '产品'], color: '#bf3989', version: 'v1.2.0' },
+  { id: 11, name: 'PPT 自动化生成 skill', category: '工具类', desc: '从 Markdown 或大纲一键生成专业 PPTX 演示文稿，支持 36 种主题。', author: '张三', authorAvatar: 'ZS', rating: 4.8, voteCount: 51, downloadCount: 245, updatedAt: '2026-07-18', tags: ['PPT', '自动化'], color: '#3fb950', version: 'v5.0.0' },
+  { id: 12, name: '酒店行业资讯监控 skill', category: '产业监控类', desc: '监控酒店行业政策、市场动态和品牌新闻，每日推送摘要。', author: '陈三', authorAvatar: 'CS', rating: 4.5, voteCount: 33, downloadCount: 76, updatedAt: '2026-07-17', tags: ['酒店', '监控'], color: '#0969da', version: 'v2.1.0' },
+  { id: 13, name: '客户满意度分析 skill', category: '客户类', desc: 'NPS 数据分析和情感识别，输出满意度趋势和关键改进方向。', author: '王五', authorAvatar: 'WW', rating: 4.4, voteCount: 28, downloadCount: 91, updatedAt: '2026-07-16', tags: ['NPS', '分析'], color: '#e3b341', version: 'v1.7.0' },
+  { id: 14, name: 'Cx 外呼策略 skill', category: 'CxSkills', desc: '基于客户分层自动推荐外呼策略，优化触达时机和话术模板。', author: '孙八', authorAvatar: 'SB', rating: 4.6, voteCount: 39, downloadCount: 145, updatedAt: '2026-07-15', tags: ['外呼', '策略'], color: '#8250df', version: 'v2.8.1' },
+  { id: 15, name: '邮件模板生成 skill', category: '工具类', desc: '根据场景自动生成专业邮件模板，支持批量发送和个性化变量。', author: '褚四', authorAvatar: 'CS', rating: 4.1, voteCount: 19, downloadCount: 63, updatedAt: '2026-07-14', tags: ['邮件', '模板'], color: '#3fb950', version: 'v1.1.0' },
+  { id: 16, name: '市场调研报告 skill', category: '市场类', desc: '自动聚合行业报告和公开数据，生成结��化市场调研文档。', author: '卫六', authorAvatar: 'WL', rating: 4.3, voteCount: 24, downloadCount: 58, updatedAt: '2026-07-13', tags: ['调研', '报告'], color: '#cf222e', version: 'v1.5.0' },
+  { id: 17, name: '用户旅程地图 skill', category: '产品类', desc: '可视化用户全生命周期旅程，标注每个触点的痛点和机会。', author: '钱七', authorAvatar: 'QQ', rating: 4.7, voteCount: 36, downloadCount: 82, updatedAt: '2026-07-12', tags: ['UX', '可视化'], color: '#bf3989', version: 'v2.2.0' },
+  { id: 18, name: '客户分群标签 skill', category: '客户类', desc: '基于多维度标签体系自动分群，支持自定义规则和动态更新。', author: '蒋五', authorAvatar: 'JW', rating: 4.5, voteCount: 31, downloadCount: 119, updatedAt: '2026-07-11', tags: ['标签', '分群'], color: '#e3b341', version: 'v3.0.0' },
+  { id: 19, name: '养老行业监控 skill', category: '产业监控类', desc: '监控养老产业政策和市场动态，辅助业务决策和市场判断。', author: '李四', authorAvatar: 'LS', rating: 4.0, voteCount: 16, downloadCount: 42, updatedAt: '2026-07-10', tags: ['养老', '监控'], color: '#0969da', version: 'v1.3.0' },
+  { id: 20, name: 'Cx 质检评分 skill', category: 'CxSkills', desc: 'AI 辅助对话质检评分，自动标注问题、生成质检报告和改善建议。', author: '沈七', authorAvatar: 'SQ', rating: 4.8, voteCount: 48, downloadCount: 167, updatedAt: '2026-07-09', tags: ['质检', 'AI'], color: '#8250df', version: 'v3.5.0' },
+  { id: 21, name: '客户意向评分 skill', category: '客户类', desc: '对话中实时评估客户意向等级，辅助坐席调整沟通策略。', author: '韩八', authorAvatar: 'HB', rating: 4.6, voteCount: 34, downloadCount: 95, updatedAt: '2026-07-08', tags: ['意向', '实时'], color: '#e3b341', version: 'v2.0.1' },
+  { id: 22, name: '批量文档翻译 skill', category: '工具类', desc: '批量翻译多语种文档，保持格式不变，支持术语表自定义。', author: '杨九', authorAvatar: 'YJ', rating: 4.2, voteCount: 22, downloadCount: 71, updatedAt: '2026-07-07', tags: ['翻译', '文档'], color: '#3fb950', version: 'v1.6.0' },
+  { id: 23, name: 'A/B 测试分析 skill', category: '产品类', desc: '自动设计和分析 A/B 测试，输出显著性结论和可视化报告。', author: '朱十', authorAvatar: 'ZS', rating: 4.4, voteCount: 26, downloadCount: 60, updatedAt: '2026-07-06', tags: ['AB测试', '统计'], color: '#bf3989', version: 'v1.0.0' },
+  { id: 24, name: 'SQL 自动生成 skill', category: '工具类', desc: '自然语言转 SQL 查询，支持多表关联和复杂聚合，适配多种数据库。', author: '张三', authorAvatar: 'ZS', rating: 4.7, voteCount: 43, downloadCount: 210, updatedAt: '2026-07-05', tags: ['SQL', 'NLP'], color: '#3fb950', version: 'v2.4.0' },
+];
+
+let currentCategory = 'all';
+let currentSort = 'updated';
+let currentView = 'list';
+let votedSkills = new Set();
+let ratedSkills = {};
+
+// 渲染列表
+function renderSkills() {
+  let skills = [...skillsData];
+
+  // 搜索过滤
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  if (query) {
+    skills = skills.filter(s => s.name.toLowerCase().includes(query) || s.author.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query) || s.tags.some(t => t.toLowerCase().includes(query)));
+  }
+
+  // 分类过滤
+  if (currentCategory !== 'all') {
+    skills = skills.filter(s => s.category === currentCategory);
+  }
+
+  // 排序
+  if (currentSort === 'updated') skills.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  else if (currentSort === 'rating') skills.sort((a, b) => b.rating - a.rating);
+  else if (currentSort === 'votes') skills.sort((a, b) => b.voteCount - a.voteCount);
+  else if (currentSort === 'downloads') skills.sort((a, b) => b.downloadCount - a.downloadCount);
+
+  document.getElementById('resultCount').textContent = skills.length + ' 个 skill';
+
+  const list = document.getElementById('skillList');
+  const empty = document.getElementById('emptyState');
+
+  if (skills.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  if (currentView === 'grid') list.className = 'skill-list grid';
+  else list.className = 'skill-list';
+
+  list.innerHTML = skills.map(s => {
+    const stars = [1,2,3,4,5].map(i => {
+      const filled = i <= Math.round(s.rating);
+      return `<svg class="${filled ? 'filled' : 'empty'}" viewBox="0 0 16 16" width="14" height="14" onclick="rateSkill(${s.id}, ${i})" style="cursor:pointer"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>`;
+    }).join('');
+    const myRating = ratedSkills[s.id] || s.rating;
+
+    return `
+      <div class="skill-card" data-id="${s.id}">
+        <div class="skill-card-header">
+          <div class="skill-icon" style="background:${s.color}">${s.authorAvatar}</div>
+          <div>
+            <div style="display:flex;align-items:center">
+              <span class="skill-name">${s.name}</span>
+              <span class="skill-visibility">${s.version}</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-secondary);margin-top:1px">${s.author} · 更新于 ${formatDate(s.updatedAt)}</div>
+          </div>
+        </div>
+        <p class="skill-desc">${s.desc}</p>
+        <div class="skill-meta">
+          <div class="skill-tags">
+            <span class="skill-tag">${s.category}</span>
+            ${s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}
+          </div>
+          <div class="skill-meta-item rating-stars" title="评分 ${myRating}">
+            ${stars}
+            <span style="margin-left:4px;font-weight:600;color:var(--text-primary)">${myRating}</span>
+          </div>
+          <div class="vote-btn ${votedSkills.has(s.id) ? 'voted' : ''}" onclick="toggleVote(${s.id})">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M4.475 2.5c-.777 0-1.495.333-2.002.877a2.9 2.9 0 00-.773 2.098c.08.91.47 1.72.911 2.345.445.63 1.018 1.202 1.615 1.674C5.56 10.522 7.3 11.43 8 11.765c.7-.335 2.44-1.243 3.774-2.271.597-.472 1.17-1.044 1.615-1.674.44-.625.83-1.434.911-2.345a2.9 2.9 0 00-.773-2.098c-.507-.544-1.225-.877-2.002-.877a2.38 2.38 0 00-1.723.723L8 4l-1.8-1.777A2.38 2.38 0 004.475 2.5z"/></svg>
+            ${s.voteCount}
+          </div>
+          <div class="download-btn" onclick="downloadSkill(${s.id})">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M7.25 10.25V2.5h1.5v7.75l2.97-2.97 1.06 1.06L8 13.06l-4.78-4.78 1.06-1.06 2.97 2.97zM2.5 13.5h11v1.5h-11z"/></svg>
+            ${s.downloadCount}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // 更新分类计数
+  document.querySelectorAll('.sidebar-count').forEach(el => {
+    const cat = el.id.replace('count-', '');
+    if (cat === 'all') el.textContent = skillsData.length;
+    else el.textContent = skillsData.filter(s => s.category === cat).length;
+  });
+}
+
+// 渲染排行榜
+function renderRanking() {
+  const ranked = [...skillsData].sort((a, b) => b.voteCount - a.voteCount).slice(0, 10);
+  document.getElementById('rankingList').innerHTML = ranked.map((s, i) => `
+    <div class="ranking-item">
+      <div class="ranking-pos">${i + 1}</div>
+      <div class="skill-icon" style="background:${s.color};width:36px;height:36px;border-radius:8px;font-size:14px">${s.authorAvatar}</div>
+      <div class="ranking-info">
+        <span class="skill-name">${s.name}</span>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">${s.category} · ${s.author} · v${s.version}</div>
+      </div>
+      <div class="ranking-stats">
+        <span><svg viewBox="0 0 16 16" width="14" height="14" fill="#e3b341"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg> ${s.rating}</span>
+        <span><svg viewBox="0 0 16 16" width="14" height="14" fill="#bf3989"><path d="M4.475 2.5c-.777 0-1.495.333-2.002.877a2.9 2.9 0 00-.773 2.098c.08.91.47 1.72.911 2.345.445.63 1.018 1.202 1.615 1.674C5.56 10.522 7.3 11.43 8 11.765c.7-.335 2.44-1.243 3.774-2.271.597-.472 1.17-1.044 1.615-1.674.44-.625.83-1.434.911-2.345a2.9 2.9 0 00-.773-2.098c-.507-.544-1.225-.877-2.002-.877a2.38 2.38 0 00-1.723.723L8 4l-1.8-1.777A2.38 2.38 0 004.475 2.5z"/></svg> ${s.voteCount} 票</span>
+        <span><svg viewBox="0 0 16 16" width="14" height="14" fill="#0969da"><path d="M7.25 10.25V2.5h1.5v7.75l2.97-2.97 1.06 1.06L8 13.06l-4.78-4.78 1.06-1.06 2.97 2.97zM2.5 13.5h11v1.5h-11z"/></svg> ${s.downloadCount}</span>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="toggleVote(${s.id})" style="margin-left:12px">${votedSkills.has(s.id) ? '已投票' : '投票'}</button>
+    </div>
+  `).join('');
+}
+
+function filterCategory(cat, el) {
+  currentCategory = cat;
+  document.querySelectorAll('.sidebar-item[data-category]').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  renderSkills();
+}
+
+function setSort(sort, el) {
+  currentSort = sort;
+  document.querySelectorAll('.sidebar-item[data-sort]').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  renderSkills();
+}
+
+function setView(view, el) {
+  currentView = view;
+  el.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderSkills();
+}
+
+function toggleVote(id) {
+  if (votedSkills.has(id)) {
+    votedSkills.delete(id);
+    showToast('已取消投票');
+  } else {
+    votedSkills.add(id);
+    showToast('投票成功！感谢参与评选');
+  }
+  const skill = skillsData.find(s => s.id === id);
+  if (skill) skill.voteCount += votedSkills.has(id) ? 1 : -1;
+  renderSkills();
+  renderRanking();
+}
+
+function rateSkill(id, star) {
+  ratedSkills[id] = star;
+  const skill = skillsData.find(s => s.id === id);
+  if (skill) skill.rating = star;
+  showToast('评分成功：' + star + ' 星');
+  renderSkills();
+  renderRanking();
+}
+
+function downloadSkill(id) {
+  const skill = skillsData.find(s => s.id === id);
+  if (skill) {
+    skill.downloadCount++;
+    showToast('开始下载 ' + skill.name);
+    renderSkills();
+  }
+}
+
+function showRanking() {
+  document.getElementById('mainPage').classList.add('hidden');
+  document.getElementById('rankingPage').classList.add('active');
+  renderRanking();
+}
+
+function hideRanking() {
+  document.getElementById('mainPage').classList.remove('hidden');
+  document.getElementById('rankingPage').classList.remove('active');
+}
+
+function showUploadModal() {
+  document.getElementById('uploadModal').style.display = 'flex';
+}
+
+function hideUploadModal() {
+  document.getElementById('uploadModal').style.display = 'none';
+  document.getElementById('uploadName').value = '';
+  document.getElementById('uploadCategory').value = '';
+  document.getElementById('uploadDesc').value = '';
+  document.getElementById('fileInfo').style.display = 'none';
+}
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) {
+    document.getElementById('fileInfo').style.display = 'block';
+    document.getElementById('fileInfo').textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+  }
+}
+
+function submitSkill() {
+  const name = document.getElementById('uploadName').value.trim();
+  const cat = document.getElementById('uploadCategory').value;
+  const desc = document.getElementById('uploadDesc').value.trim();
+  if (!name || !cat || !desc) { showToast('请填写所有必填项'); return; }
+  skillsData.unshift({
+    id: Date.now(),
+    name, category: cat, desc,
+    author: '我', authorAvatar: 'ME',
+    rating: 0, voteCount: 0, downloadCount: 0,
+    updatedAt: new Date().toISOString().split('T')[0],
+    tags: ['新上传'], color: '#0969da', version: 'v0.1.0'
+  });
+  hideUploadModal();
+  currentCategory = 'all';
+  document.querySelectorAll('.sidebar-item[data-category]').forEach(i => i.classList.remove('active'));
+  document.querySelector('.sidebar-item[data-category="all"]').classList.add('active');
+  renderSkills();
+  showToast('上传成功！等待管理员审核');
+}
+
+function showToast(msg) {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast success';
+  toast.innerHTML = '<svg viewBox="0 0 16 16" fill="#3fb950" width="14" height="14"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>' + msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+function formatDate(d) {
+  const now = new Date(); const date = new Date(d); const diff = Math.floor((now - date) / 86400000);
+  if (diff === 0) return '今天'; if (diff === 1) return '昨天'; if (diff < 7) return diff + '天前';
+  return d;
+}
+
+// 初始化
+document.getElementById('searchInput').addEventListener('input', renderSkills);
+
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) {
+    const file = e.dataTransfer.files[0];
+    document.getElementById('fileInfo').style.display = 'block';
+    document.getElementById('fileInfo').textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+  }
+});
+
+renderSkills();
+</script>
+</body>
+</html>
