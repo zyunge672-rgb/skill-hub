@@ -91,5 +91,12 @@
     "role": "user",
     "status": "pending",
     "createdAt": "2026-08-03T09:30:27.871Z"
+  },
+  {
+    "username": "songyuexi",
+    "passwordHash": "ccbc8b088fa749632cdbfc4a30d166dd776367b793ec057decbf061c4431cb80",
+    "role": "user",
+    "status": "pending",
+    "createdAt": "2026-08-03T09:34:20.205Z"
   }
 ]
