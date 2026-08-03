@@ -169,27 +169,6 @@
       "updatedAt": "2026-07-19T12:00:00Z"
     },
     {
-      "id": "skill-011",
-      "name": "price-volume-skill",
-      "displayName": "量价测算",
-      "desc": "基于竞品平台价、地段优劣势、产品力优劣势、市场预期和产业走势，综合判断折溢价档位。",
-      "cat": "personal",
-      "sub": "市场类",
-      "author": "zhangyunge",
-      "ver": "1.5.0",
-      "tags": [
-        "定价",
-        "量价",
-        "测算"
-      ],
-      "rating": 4.6,
-      "ratingCount": 14,
-      "votes": 41,
-      "downloads": 87,
-      "createdAt": "2026-07-10T13:00:00Z",
-      "updatedAt": "2026-07-25T09:00:00Z"
-    },
-    {
       "id": "skill-012",
       "name": "real-estate-competitive-analysis",
       "displayName": "新房竞品分析",
