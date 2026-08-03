@@ -42,8 +42,9 @@
     "username": "wangyi",
     "passwordHash": "f0cadada22c8726363d6a47a46141a359ab052ea39fea92925a1df2be4a0bbf9",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T08:15:56.905Z"
+    "status": "active",
+    "createdAt": "2026-08-03T08:15:56.905Z",
+    "updatedAt": "2026-08-03T08:17:55.563Z"
   },
   {
     "username": "wangyi233",
