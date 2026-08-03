@@ -10,7 +10,8 @@
     "username": "杜利",
     "passwordHash": "0b18821102d96d076b6c0a98eb1544a4ebbeec1e5306a1162f09b41b3c2cba37",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T07:05:33.668Z"
+    "status": "active",
+    "createdAt": "2026-08-03T07:05:33.668Z",
+    "updatedAt": "2026-08-03T07:07:35.030Z"
   }
 ]
