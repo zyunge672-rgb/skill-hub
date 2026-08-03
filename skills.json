@@ -1,27 +1,6 @@
 {
   "skills": [
     {
-      "id": "skill-001",
-      "name": "investment-calc",
-      "displayName": "投资测算",
-      "desc": "投资测算 Skill，基于前序 Agent 输入的地价底价、建安成本、分业态面积套数、最终量价，按照标准投模公式进行四个版本的利润测算。",
-      "cat": "personal",
-      "sub": "产品类",
-      "author": "zhangyunge",
-      "ver": "2.3.1",
-      "tags": [
-        "投资",
-        "测算",
-        "地产"
-      ],
-      "rating": 4.7,
-      "ratingCount": 23,
-      "votes": 89,
-      "downloads": 156,
-      "createdAt": "2026-07-20T10:00:00Z",
-      "updatedAt": "2026-07-28T14:30:00Z"
-    },
-    {
       "id": "skill-002",
       "name": "customer-demand-analysis",
       "displayName": "客群需求分析",
