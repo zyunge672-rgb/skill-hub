@@ -101,5 +101,12 @@
     "status": "active",
     "createdAt": "2026-08-03T09:34:20.205Z",
     "updatedAt": "2026-08-03T09:34:56.511Z"
+  },
+  {
+    "username": "yuwanlin",
+    "passwordHash": "caa5ef8190fdd99618e335ebd518bc17dc090b88f448b52168daf7def73c6c1d",
+    "role": "user",
+    "status": "pending",
+    "createdAt": "2026-08-03T09:46:11.764Z"
   }
 ]
