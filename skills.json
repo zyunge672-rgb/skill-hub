@@ -1,6 +1,27 @@
 {
   "skills": [
     {
+      "id": "skill-msd2006d",
+      "name": "小红书客户讯息爬取skills",
+      "displayName": "小红书客户讯息爬取skills",
+      "desc": "技能能力摘要：\n触发方式：当用户提到小红书采集、小红书搜索、采集小红书笔记、小红书调研、小红书舆情、爬小红书等意图时自动触发\n核心能力：\n通过云手机（mobile_use）打开小红书App搜索关键词\n采集笔记详情（用户名、标题、正文、点赞数、评论等）\n自动过滤中介/销售账号（18个关键词过滤规则）\n输出结构化JSON数据\n依赖：云手机已安装并登录小红书App\n输入参数：搜索关键词、采集数量、目标城市（可选）\n输出格式：JSON数据文件，包含笔记详情和评论",
+      "fileType": "zip",
+      "fileName": "_app_data_所有对话_主对话_用户上传_xiaohongshu-collection.zip",
+      "fileContent": "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",
+      "mdContent": "",
+      "cat": "personal",
+      "sub": "客户类",
+      "author": "于婉麟",
+      "ver": "1.0.0",
+      "tags": [],
+      "rating": 0,
+      "ratingCount": 0,
+      "votes": 0,
+      "downloads": 0,
+      "createdAt": "2026-08-03T09:55:35.269Z",
+      "updatedAt": "2026-08-03T09:55:35.269Z"
+    },
+    {
       "id": "skill-msd1wfxo",
       "name": "配套扫描",
       "displayName": "配套扫描",
