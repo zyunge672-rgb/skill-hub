@@ -169,27 +169,6 @@
       "updatedAt": "2026-07-26T14:00:00Z"
     },
     {
-      "id": "skill-009",
-      "name": "layout-planning-skill",
-      "displayName": "总图强排规划",
-      "desc": "地产总图智能强排规划技能，渐进式披露架构：按步骤按需加载知识，避免信息过载。",
-      "cat": "personal",
-      "sub": "产品类",
-      "author": "lisi",
-      "ver": "13.0.0",
-      "tags": [
-        "强排",
-        "规划",
-        "总图"
-      ],
-      "rating": 4.2,
-      "ratingCount": 9,
-      "votes": 28,
-      "downloads": 54,
-      "createdAt": "2026-06-01T08:00:00Z",
-      "updatedAt": "2026-07-18T10:00:00Z"
-    },
-    {
       "id": "skill-010",
       "name": "commercial-project-research",
       "displayName": "商业项目调研",
