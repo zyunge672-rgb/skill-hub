@@ -20,5 +20,12 @@
     "role": "user",
     "status": "pending",
     "createdAt": "2026-08-03T07:57:52.950Z"
+  },
+  {
+    "username": "icecream",
+    "passwordHash": "fc456c7341cc41714b2cbe8f224255f60fbe538037d19bda63d83234344e40f5",
+    "role": "user",
+    "status": "pending",
+    "createdAt": "2026-08-03T08:07:19.443Z"
   }
 ]
