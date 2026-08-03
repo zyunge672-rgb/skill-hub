@@ -13,5 +13,12 @@
     "status": "active",
     "createdAt": "2026-08-03T07:05:33.668Z",
     "updatedAt": "2026-08-03T07:07:35.030Z"
+  },
+  {
+    "username": "Linyun",
+    "passwordHash": "aeb32cfe00d196040e9758c276853282721fbd222038a54e9ae04d6686066e1b",
+    "role": "user",
+    "status": "pending",
+    "createdAt": "2026-08-03T07:57:52.950Z"
   }
 ]
