@@ -53,5 +53,12 @@
     "status": "rejected",
     "createdAt": "2026-08-03T08:16:17.739Z",
     "updatedAt": "2026-08-03T08:17:57.896Z"
+  },
+  {
+    "username": "严诗菱",
+    "passwordHash": "8706134d380205846cde05b2f488e1fb958e8042c26760b1ed577235053053d9",
+    "role": "user",
+    "status": "pending",
+    "createdAt": "2026-08-03T08:25:45.792Z"
   }
 ]
