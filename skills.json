@@ -22,27 +22,6 @@
       "updatedAt": "2026-07-22T10:00:00Z"
     },
     {
-      "id": "skill-004",
-      "name": "land-parcel-analysis",
-      "displayName": "地块配套分析",
-      "desc": "地块配套分析与投资决策评估技能，对拟投资地块进行系统化的配套分析和量化评分。",
-      "cat": "expert",
-      "sub": null,
-      "author": "zhaoliu",
-      "ver": "4.1.2",
-      "tags": [
-        "地块",
-        "配套",
-        "投资决策"
-      ],
-      "rating": 4.8,
-      "ratingCount": 45,
-      "votes": 134,
-      "downloads": 312,
-      "createdAt": "2026-05-20T09:00:00Z",
-      "updatedAt": "2026-07-24T16:00:00Z"
-    },
-    {
       "id": "skill-005",
       "name": "excel-auto-zh",
       "displayName": "Excel 自动化",
