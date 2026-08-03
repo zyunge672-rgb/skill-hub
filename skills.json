@@ -22,7 +22,7 @@
       "name": "html-ppt-skill",
       "displayName": "HTML PPT 生成",
       "desc": "构建专业的 HTML 演示文稿，支持 36 个主题、31 种布局、47 种动画效果。",
-      "cat": "personal",
+      "cat": "external",
       "sub": "工具类",
       "author": "zhaoliu",
       "ver": "4.0.0",
@@ -36,7 +36,7 @@
       "votes": 45,
       "downloads": 168,
       "createdAt": "2026-06-15T11:00:00Z",
-      "updatedAt": "2026-07-27T15:00:00Z"
+      "updatedAt": "2026-08-03T06:38:14.394Z"
     }
   ],
   "comments": {},
