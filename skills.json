@@ -148,27 +148,6 @@
       "updatedAt": "2026-07-27T15:00:00Z"
     },
     {
-      "id": "skill-008",
-      "name": "land-positioning-strategy",
-      "displayName": "地块定位策略",
-      "desc": "房地产地块定位策略 Skill，基于配套、客户、市场、设计四个维度综合研判产品矩阵与量价建议。",
-      "cat": "expert",
-      "sub": null,
-      "author": "zhangyunge",
-      "ver": "2.0.0",
-      "tags": [
-        "定位",
-        "产品矩阵",
-        "量价"
-      ],
-      "rating": 4.7,
-      "ratingCount": 12,
-      "votes": 34,
-      "downloads": 76,
-      "createdAt": "2026-07-05T09:00:00Z",
-      "updatedAt": "2026-07-26T14:00:00Z"
-    },
-    {
       "id": "skill-010",
       "name": "commercial-project-research",
       "displayName": "商业项目调研",
