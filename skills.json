@@ -1,27 +1,6 @@
 {
   "skills": [
     {
-      "id": "skill-006",
-      "name": "dianping-price-scraper",
-      "displayName": "大众点评客单价采集",
-      "desc": "从大众点评批量采集餐饮品牌人均消费数据，使用 Chrome DevTools Protocol 实现自动化抓取。",
-      "cat": "personal",
-      "sub": "市场类",
-      "author": "wangwu",
-      "ver": "1.5.0",
-      "tags": [
-        "数据采集",
-        "餐饮",
-        "客单价"
-      ],
-      "rating": 4.6,
-      "ratingCount": 15,
-      "votes": 56,
-      "downloads": 89,
-      "createdAt": "2026-06-25T14:00:00Z",
-      "updatedAt": "2026-07-20T08:00:00Z"
-    },
-    {
       "id": "skill-007",
       "name": "html-ppt-skill",
       "displayName": "HTML PPT 生成",
