@@ -58,7 +58,8 @@
     "username": "严诗菱",
     "passwordHash": "8706134d380205846cde05b2f488e1fb958e8042c26760b1ed577235053053d9",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T08:25:45.792Z"
+    "status": "active",
+    "createdAt": "2026-08-03T08:25:45.792Z",
+    "updatedAt": "2026-08-03T08:29:48.857Z"
   }
 ]
