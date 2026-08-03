@@ -1,27 +1,6 @@
 {
   "skills": [
     {
-      "id": "skill-002",
-      "name": "customer-demand-analysis",
-      "displayName": "客群需求分析",
-      "desc": "地块客群及需求分析技能，对拟投资地块进行客群画像、人口质素分析和产品定位。",
-      "cat": "personal",
-      "sub": "客户类",
-      "author": "lisi",
-      "ver": "1.2.0",
-      "tags": [
-        "客群",
-        "需求分析",
-        "定位"
-      ],
-      "rating": 4.3,
-      "ratingCount": 18,
-      "votes": 67,
-      "downloads": 132,
-      "createdAt": "2026-07-15T08:00:00Z",
-      "updatedAt": "2026-07-22T10:00:00Z"
-    },
-    {
       "id": "skill-005",
       "name": "excel-auto-zh",
       "displayName": "Excel 自动化",
