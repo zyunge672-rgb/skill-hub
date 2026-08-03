@@ -112,6 +112,14 @@
       "updatedAt": "2026-08-03T07:04:21.467Z"
     }
   ],
-  "comments": {},
+  "comments": {
+    "skill-mscybexe": [
+      {
+        "author": "张云鸽",
+        "content": "此为1.0版本，欢迎大家评论区提需，迭代2.0版",
+        "createdAt": "2026-08-03T08:57:23.254Z"
+      }
+    ]
+  },
   "seed": true
 }
