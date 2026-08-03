@@ -22,27 +22,6 @@
       "updatedAt": "2026-07-22T10:00:00Z"
     },
     {
-      "id": "skill-003",
-      "name": "industry-news-monitor",
-      "displayName": "行业资讯监测",
-      "desc": "行业资讯采集与监测一体化工具，支持酒店/商业地产/养老公寓三大领域。",
-      "cat": "personal",
-      "sub": "产业类",
-      "author": "wangwu",
-      "ver": "3.0.1",
-      "tags": [
-        "资讯",
-        "监测",
-        "报告"
-      ],
-      "rating": 4.9,
-      "ratingCount": 31,
-      "votes": 102,
-      "downloads": 223,
-      "createdAt": "2026-06-10T12:00:00Z",
-      "updatedAt": "2026-07-28T09:00:00Z"
-    },
-    {
       "id": "skill-004",
       "name": "land-parcel-analysis",
       "displayName": "地块配套分析",
