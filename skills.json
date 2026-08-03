@@ -1,23 +1,5 @@
 {
-  "skills": [
-    {
-      "id": "skill-mscui7d8",
-      "name": "PPT master",
-      "displayName": "PPT master",
-      "desc": "排版配色表现优秀，设计方案提前沟通，设计细节打磨精准",
-      "cat": "external",
-      "sub": "工具类",
-      "author": "杜利",
-      "ver": "1.0.0",
-      "tags": [],
-      "rating": 0,
-      "ratingCount": 0,
-      "votes": 0,
-      "downloads": 2,
-      "createdAt": "2026-08-03T06:25:47.468Z",
-      "updatedAt": "2026-08-03T06:38:13.397Z"
-    }
-  ],
+  "skills": [],
   "comments": {},
   "seed": true
 }
