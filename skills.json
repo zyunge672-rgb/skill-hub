@@ -1,0 +1,258 @@
+{
+  "skills": [
+    {
+      "id": "skill-001",
+      "name": "investment-calc",
+      "displayName": "投资测算",
+      "desc": "投资测算 Skill，基于前序 Agent 输入的地价底价、建安成本、分业态面积套数、最终量价，按照标准投模公式进行四个版本的利润测算。",
+      "cat": "personal",
+      "sub": "产品类",
+      "author": "zhangyunge",
+      "ver": "2.3.1",
+      "tags": [
+        "投资",
+        "测算",
+        "地产"
+      ],
+      "rating": 4.7,
+      "ratingCount": 23,
+      "votes": 89,
+      "downloads": 156,
+      "createdAt": "2026-07-20T10:00:00Z",
+      "updatedAt": "2026-07-28T14:30:00Z"
+    },
+    {
+      "id": "skill-002",
+      "name": "customer-demand-analysis",
+      "displayName": "客群需求分析",
+      "desc": "地块客群及需求分析技能，对拟投资地块进行客群画像、人口质素分析和产品定位。",
+      "cat": "personal",
+      "sub": "客户类",
+      "author": "lisi",
+      "ver": "1.2.0",
+      "tags": [
+        "客群",
+        "需求分析",
+        "定位"
+      ],
+      "rating": 4.3,
+      "ratingCount": 18,
+      "votes": 67,
+      "downloads": 132,
+      "createdAt": "2026-07-15T08:00:00Z",
+      "updatedAt": "2026-07-22T10:00:00Z"
+    },
+    {
+      "id": "skill-003",
+      "name": "industry-news-monitor",
+      "displayName": "行业资讯监测",
+      "desc": "行业资讯采集与监测一体化工具，支持酒店/商业地产/养老公寓三大领域。",
+      "cat": "personal",
+      "sub": "产业类",
+      "author": "wangwu",
+      "ver": "3.0.1",
+      "tags": [
+        "资讯",
+        "监测",
+        "报告"
+      ],
+      "rating": 4.9,
+      "ratingCount": 31,
+      "votes": 102,
+      "downloads": 223,
+      "createdAt": "2026-06-10T12:00:00Z",
+      "updatedAt": "2026-07-28T09:00:00Z"
+    },
+    {
+      "id": "skill-004",
+      "name": "land-parcel-analysis",
+      "displayName": "地块配套分析",
+      "desc": "地块配套分析与投资决策评估技能，对拟投资地块进行系统化的配套分析和量化评分。",
+      "cat": "expert",
+      "sub": null,
+      "author": "zhaoliu",
+      "ver": "4.1.2",
+      "tags": [
+        "地块",
+        "配套",
+        "投资决策"
+      ],
+      "rating": 4.8,
+      "ratingCount": 45,
+      "votes": 134,
+      "downloads": 312,
+      "createdAt": "2026-05-20T09:00:00Z",
+      "updatedAt": "2026-07-24T16:00:00Z"
+    },
+    {
+      "id": "skill-005",
+      "name": "excel-auto-zh",
+      "displayName": "Excel 自动化",
+      "desc": "Excel / WPS 表格自动化处理工具，用 openpyxl 创建格式专业的报表、解析含宏的复杂 xlsm 文件、批量合并多工作表数据。",
+      "cat": "personal",
+      "sub": "工具类",
+      "author": "lisi",
+      "ver": "2.0.0",
+      "tags": [
+        "Excel",
+        "自动化",
+        "报表"
+      ],
+      "rating": 4.5,
+      "ratingCount": 27,
+      "votes": 78,
+      "downloads": 198,
+      "createdAt": "2026-07-01T10:00:00Z",
+      "updatedAt": "2026-07-25T11:00:00Z"
+    },
+    {
+      "id": "skill-006",
+      "name": "dianping-price-scraper",
+      "displayName": "大众点评客单价采集",
+      "desc": "从大众点评批量采集餐饮品牌人均消费数据，使用 Chrome DevTools Protocol 实现自动化抓取。",
+      "cat": "personal",
+      "sub": "市场类",
+      "author": "wangwu",
+      "ver": "1.5.0",
+      "tags": [
+        "数据采集",
+        "餐饮",
+        "客单价"
+      ],
+      "rating": 4.6,
+      "ratingCount": 15,
+      "votes": 56,
+      "downloads": 89,
+      "createdAt": "2026-06-25T14:00:00Z",
+      "updatedAt": "2026-07-20T08:00:00Z"
+    },
+    {
+      "id": "skill-007",
+      "name": "html-ppt-skill",
+      "displayName": "HTML PPT 生成",
+      "desc": "构建专业的 HTML 演示文稿，支持 36 个主题、31 种布局、47 种动画效果。",
+      "cat": "personal",
+      "sub": "工具类",
+      "author": "zhaoliu",
+      "ver": "4.0.0",
+      "tags": [
+        "PPT",
+        "HTML",
+        "演示"
+      ],
+      "rating": 4.4,
+      "ratingCount": 20,
+      "votes": 45,
+      "downloads": 167,
+      "createdAt": "2026-06-15T11:00:00Z",
+      "updatedAt": "2026-07-27T15:00:00Z"
+    },
+    {
+      "id": "skill-008",
+      "name": "land-positioning-strategy",
+      "displayName": "地块定位策略",
+      "desc": "房地产地块定位策略 Skill，基于配套、客户、市场、设计四个维度综合研判产品矩阵与量价建议。",
+      "cat": "expert",
+      "sub": null,
+      "author": "zhangyunge",
+      "ver": "2.0.0",
+      "tags": [
+        "定位",
+        "产品矩阵",
+        "量价"
+      ],
+      "rating": 4.7,
+      "ratingCount": 12,
+      "votes": 34,
+      "downloads": 76,
+      "createdAt": "2026-07-05T09:00:00Z",
+      "updatedAt": "2026-07-26T14:00:00Z"
+    },
+    {
+      "id": "skill-009",
+      "name": "layout-planning-skill",
+      "displayName": "总图强排规划",
+      "desc": "地产总图智能强排规划技能，渐进式披露架构：按步骤按需加载知识，避免信息过载。",
+      "cat": "personal",
+      "sub": "产品类",
+      "author": "lisi",
+      "ver": "13.0.0",
+      "tags": [
+        "强排",
+        "规划",
+        "总图"
+      ],
+      "rating": 4.2,
+      "ratingCount": 9,
+      "votes": 28,
+      "downloads": 54,
+      "createdAt": "2026-06-01T08:00:00Z",
+      "updatedAt": "2026-07-18T10:00:00Z"
+    },
+    {
+      "id": "skill-010",
+      "name": "commercial-project-research",
+      "displayName": "商业项目调研",
+      "desc": "商业项目调研的唯一默认入口。研究基本信息、城市与商圈角色、定位演进、目标客群。",
+      "cat": "personal",
+      "sub": "产业类",
+      "author": "wangwu",
+      "ver": "1.8.0",
+      "tags": [
+        "商业地产",
+        "调研",
+        "定位"
+      ],
+      "rating": 4.5,
+      "ratingCount": 16,
+      "votes": 52,
+      "downloads": 98,
+      "createdAt": "2026-05-15T10:00:00Z",
+      "updatedAt": "2026-07-19T12:00:00Z"
+    },
+    {
+      "id": "skill-011",
+      "name": "price-volume-skill",
+      "displayName": "量价测算",
+      "desc": "基于竞品平台价、地段优劣势、产品力优劣势、市场预期和产业走势，综合判断折溢价档位。",
+      "cat": "personal",
+      "sub": "市场类",
+      "author": "zhangyunge",
+      "ver": "1.5.0",
+      "tags": [
+        "定价",
+        "量价",
+        "测算"
+      ],
+      "rating": 4.6,
+      "ratingCount": 14,
+      "votes": 41,
+      "downloads": 87,
+      "createdAt": "2026-07-10T13:00:00Z",
+      "updatedAt": "2026-07-25T09:00:00Z"
+    },
+    {
+      "id": "skill-012",
+      "name": "real-estate-competitive-analysis",
+      "displayName": "新房竞品分析",
+      "desc": "房地产新房竞品市场结构分析，基于供应/成交/户配底表输出标准化汇总表和成交结构表。",
+      "cat": "personal",
+      "sub": "市场类",
+      "author": "zhaoliu",
+      "ver": "2.1.0",
+      "tags": [
+        "竞品",
+        "市场分析",
+        "新房"
+      ],
+      "rating": 4.1,
+      "ratingCount": 11,
+      "votes": 33,
+      "downloads": 62,
+      "createdAt": "2026-06-20T14:00:00Z",
+      "updatedAt": "2026-07-15T11:00:00Z"
+    }
+  ],
+  "comments": {},
+  "seed": true
+}
