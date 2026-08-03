@@ -66,7 +66,8 @@
     "username": "李小龙",
     "passwordHash": "c904d4c3485db6569c9deb41da845d82056e8843eafba8bc8a90aaa06df96963",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T08:53:05.528Z"
+    "status": "active",
+    "createdAt": "2026-08-03T08:53:05.528Z",
+    "updatedAt": "2026-08-03T09:00:51.990Z"
   }
 ]
