@@ -41,27 +41,6 @@
       "downloads": 167,
       "createdAt": "2026-06-15T11:00:00Z",
       "updatedAt": "2026-07-27T15:00:00Z"
-    },
-    {
-      "id": "skill-010",
-      "name": "commercial-project-research",
-      "displayName": "商业项目调研",
-      "desc": "商业项目调研的唯一默认入口。研究基本信息、城市与商圈角色、定位演进、目标客群。",
-      "cat": "personal",
-      "sub": "产业类",
-      "author": "wangwu",
-      "ver": "1.8.0",
-      "tags": [
-        "商业地产",
-        "调研",
-        "定位"
-      ],
-      "rating": 4.5,
-      "ratingCount": 16,
-      "votes": 52,
-      "downloads": 98,
-      "createdAt": "2026-05-15T10:00:00Z",
-      "updatedAt": "2026-07-19T12:00:00Z"
     }
   ],
   "comments": {},
