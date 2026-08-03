@@ -167,27 +167,6 @@
       "downloads": 98,
       "createdAt": "2026-05-15T10:00:00Z",
       "updatedAt": "2026-07-19T12:00:00Z"
-    },
-    {
-      "id": "skill-012",
-      "name": "real-estate-competitive-analysis",
-      "displayName": "新房竞品分析",
-      "desc": "房地产新房竞品市场结构分析，基于供应/成交/户配底表输出标准化汇总表和成交结构表。",
-      "cat": "personal",
-      "sub": "市场类",
-      "author": "zhaoliu",
-      "ver": "2.1.0",
-      "tags": [
-        "竞品",
-        "市场分析",
-        "新房"
-      ],
-      "rating": 4.1,
-      "ratingCount": 11,
-      "votes": 33,
-      "downloads": 62,
-      "createdAt": "2026-06-20T14:00:00Z",
-      "updatedAt": "2026-07-15T11:00:00Z"
     }
   ],
   "comments": {},
