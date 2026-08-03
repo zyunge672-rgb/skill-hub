@@ -1,27 +1,6 @@
 {
   "skills": [
     {
-      "id": "skill-005",
-      "name": "excel-auto-zh",
-      "displayName": "Excel 自动化",
-      "desc": "Excel / WPS 表格自动化处理工具，用 openpyxl 创建格式专业的报表、解析含宏的复杂 xlsm 文件、批量合并多工作表数据。",
-      "cat": "personal",
-      "sub": "工具类",
-      "author": "lisi",
-      "ver": "2.0.0",
-      "tags": [
-        "Excel",
-        "自动化",
-        "报表"
-      ],
-      "rating": 4.5,
-      "ratingCount": 27,
-      "votes": 78,
-      "downloads": 198,
-      "createdAt": "2026-07-01T10:00:00Z",
-      "updatedAt": "2026-07-25T11:00:00Z"
-    },
-    {
       "id": "skill-006",
       "name": "dianping-price-scraper",
       "displayName": "大众点评客单价采集",
