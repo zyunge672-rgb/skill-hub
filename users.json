@@ -82,8 +82,9 @@
     "username": "51T",
     "passwordHash": "98e7b8864d42c8d95bc70d88fb96664d371958b217f479ceb3e30130052c0d9f",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T09:24:19.628Z"
+    "status": "rejected",
+    "createdAt": "2026-08-03T09:24:19.628Z",
+    "updatedAt": "2026-08-03T09:35:19.699Z"
   },
   {
     "username": "武雨婷",
