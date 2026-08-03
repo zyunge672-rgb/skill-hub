@@ -74,7 +74,8 @@
     "username": "maojiaxue",
     "passwordHash": "fc456c7341cc41714b2cbe8f224255f60fbe538037d19bda63d83234344e40f5",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T09:12:43.025Z"
+    "status": "active",
+    "createdAt": "2026-08-03T09:12:43.025Z",
+    "updatedAt": "2026-08-03T09:17:49.372Z"
   }
 ]
