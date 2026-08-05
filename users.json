@@ -114,7 +114,8 @@
     "username": "77skill",
     "passwordHash": "02081993d2789a89160d5107732b4ebbd5c99ec0e027fa26c0342bcd44d90c60",
     "role": "user",
-    "status": "pending",
-    "createdAt": "2026-08-03T12:40:43.391Z"
+    "status": "active",
+    "createdAt": "2026-08-03T12:40:43.391Z",
+    "updatedAt": "2026-08-05T08:13:26.429Z"
   }
 ]
